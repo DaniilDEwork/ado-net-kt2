@@ -1,0 +1,44 @@
+@page
+@model Kt2Editor.Pages.FormatEditorModel
+
+@{
+    ViewData["Title"] = "Форматирование текста";
+}
+
+<h1>Форматирование текста</h1>
+
+<p>
+    Выделите текст в поле и нажмите кнопку форматирования.
+    Результат отображается в предпросмотре
+</p>
+
+@if (Model.StatusMessage != null)
+{
+    <p class="status">@Model.StatusMessage</p>
+}
+
+<div class="toolbar">
+    <button type="button" data-tag="b">Жирный</button>
+    <button type="button" data-tag="i">Курсив</button>
+    <button type="button" data-tag="u">Подчёркнутый</button>
+</div>
+
+<p id="formatStatus" class="hint" role="status"></p>
+
+<form method="post">
+    <label asp-for="EditorText">Текст с разметкой:</label>
+
+    <textarea asp-for="EditorText"
+              id="formatText"
+              rows="10"></textarea>
+
+    <button type="submit">Сохранить</button>
+</form>
+
+<h2>Предпросмотр</h2>
+<div id="preview" class="preview"></div>
+
+@section Scripts {
+    <script src="~/js/format-editor.js"
+            asp-append-version="true"></script>
+}

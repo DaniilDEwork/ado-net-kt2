@@ -1,0 +1,23 @@
+@page
+@model Kt2Editor.Pages.TextEditorModel
+
+@{
+    ViewData["Title"] = "Обычный редактор";
+}
+
+<h1>Обычный редактор текста</h1>
+
+<p>Введите текст и сохраните его на сервере</p>
+
+@if (Model.StatusMessage != null)
+{
+    <p class="status">@Model.StatusMessage</p>
+}
+
+<form method="post">
+    <label asp-for="EditorText">Текст:</label>
+
+    <textarea asp-for="EditorText" rows="10"></textarea>
+
+    <button type="submit">Сохранить</button>
+</form>

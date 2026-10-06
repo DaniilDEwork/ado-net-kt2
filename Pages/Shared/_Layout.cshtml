@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>@ViewData["Title"] — КТ-2</title>
+
+    <link rel="stylesheet" href="~/lib/quill/quill.snow.css" />
+
+    <link rel="stylesheet"
+          href="~/css/site.css"
+          asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <div class="container">
+            <p class="site-title">КТ-2 - редактор текста</p>
+
+            <nav>
+                <a asp-page="/Index">Главная</a>
+                <a asp-page="/TextEditor">Обычный редактор</a>
+                <a asp-page="/FormatEditor">Форматирование</a>
+                <a asp-page="/RichEditor">WYSIWYG</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container content">
+        @RenderBody()
+    </main>
+
+    <footer class="container">
+        ASP.NET Core Razor Pages
+    </footer>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

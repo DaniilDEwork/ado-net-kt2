@@ -1,0 +1,75 @@
+@page
+@model Kt2Editor.Pages.RichEditorModel
+
+@{
+    ViewData["Title"] = "WYSIWYG-редактор";
+}
+
+<h1>WYSIWYG-редактор</h1>
+
+<p>Используется сторонний редактор Quill</p>
+
+@if (Model.StatusMessage != null)
+{
+    <p class="status">@Model.StatusMessage</p>
+}
+
+<div asp-validation-summary="All" class="error"></div>
+
+<form method="post" id="richForm">
+    <textarea asp-for="EditorText"
+              id="savedContent"
+              hidden></textarea>
+
+    <div id="richEditor"></div>
+
+    <div class="image-tools">
+        <label for="imageFile">Изображение с компьютера:</label>
+
+        <input type="file"
+               id="imageFile"
+               accept="image/png,image/jpeg,image/webp" />
+
+        <p class="hint">
+            PNG, JPEG или WebP, не больше 300 КБ
+            Для изменения изображения сначала нажмите на него
+        </p>
+
+        <label for="imageWidth">Ширина изображения:</label>
+
+        <select id="imageWidth">
+            <option value="150">150 px</option>
+            <option value="300" selected>300 px</option>
+            <option value="450">450 px</option>
+        </select>
+
+        <label for="imageAlign">Положение:</label>
+
+        <select id="imageAlign">
+            <option value="">Слева</option>
+            <option value="center">По центру</option>
+            <option value="right">Справа</option>
+        </select>
+
+        <button type="button" id="applyImage" disabled>
+            Применить к изображению
+        </button>
+
+        <button type="button" id="deleteImage" disabled>
+            Удалить изображение
+        </button>
+    </div>
+
+    <button type="submit" id="saveRich" disabled>
+        Сохранить
+    </button>
+</form>
+
+<p id="richStatus" class="hint" role="status"></p>
+
+@section Scripts {
+    <script src="~/lib/quill/quill.js"></script>
+
+    <script src="~/js/rich-editor.js"
+            asp-append-version="true"></script>
+}

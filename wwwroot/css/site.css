@@ -1,0 +1,137 @@
+body {
+    margin: 0;
+    background: #f3f5f7;
+    color: #263238;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+header {
+    padding: 20px 0;
+    background: #243b53;
+    color: white;
+}
+
+.site-title {
+    margin: 0 0 12px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+nav a {
+    padding: 8px 12px;
+    background: #385777;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+}
+
+nav a:hover {
+    background: #4b7097;
+}
+
+.content {
+    box-sizing: border-box;
+    margin-top: 25px;
+    padding: 25px;
+    background: white;
+    border-radius: 8px;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+textarea {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #b0bec5;
+    border-radius: 5px;
+    font: inherit;
+    resize: vertical;
+}
+
+button {
+    margin-top: 12px;
+    padding: 9px 15px;
+    border: none;
+    border-radius: 5px;
+    background: #243b53;
+    color: white;
+    cursor: pointer;
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
+.toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.preview {
+    min-height: 100px;
+    padding: 15px;
+    border: 1px solid #b0bec5;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.status {
+    padding: 10px;
+    background: #e8f5e9;
+    color: #256029;
+}
+
+.hint {
+    color: #546e7a;
+}
+
+.error {
+    color: #b71c1c;
+}
+
+#richEditor {
+    min-height: 300px;
+}
+
+.ql-editor {
+    min-height: 300px;
+}
+
+.ql-editor img {
+    max-width: 100%;
+    height: auto;
+}
+
+.image-tools {
+    margin-top: 20px;
+    padding: 15px;
+    background: #f3f5f7;
+}
+
+select {
+    padding: 7px;
+}
+
+footer {
+    padding: 20px 0;
+    color: #607d8b;
+}
