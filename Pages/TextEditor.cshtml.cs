@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using Kt2Editor.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -14,6 +15,7 @@ public class TextEditorModel : PageModel
     }
 
     [BindProperty]
+    [DisplayFormat(ConvertEmptyStringToNull = false)]
     public string? EditorText { get; set; }
 
     [TempData]
@@ -26,6 +28,11 @@ public class TextEditorModel : PageModel
 
     public IActionResult OnPost()
     {
+        if (!ModelState.IsValid)
+        {
+            return Page();
+        }
+
         storage.Save("text.txt", EditorText ?? "");
         StatusMessage = "Текст сохранён на сервере";
 

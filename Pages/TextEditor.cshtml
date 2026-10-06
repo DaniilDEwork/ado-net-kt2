@@ -14,6 +14,8 @@
     <p class="status">@Model.StatusMessage</p>
 }
 
+<div asp-validation-summary="All" class="error"></div>
+
 <form method="post">
     <label asp-for="EditorText">Текст:</label>
 

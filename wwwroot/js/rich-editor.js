@@ -76,7 +76,18 @@ if (typeof Quill === "undefined") {
 
     if (savedContent.value.trim() !== "") {
         try {
-            quill.setContents(JSON.parse(savedContent.value));
+            const content = JSON.parse(savedContent.value);
+
+            if (!content || !Array.isArray(content.ops) ||
+                content.ops.length === 0 || !content.ops.every(operation =>
+                    operation && typeof operation === "object" &&
+                    (typeof operation.insert === "string" ||
+                        (operation.insert && typeof operation.insert.image === "string")) &&
+                    !("retain" in operation) && !("delete" in operation))) {
+                throw new Error("???????? ?????? ?????????");
+            }
+
+            quill.setContents(content);
         } catch {
             loaded = false;
             richStatus.textContent =
@@ -104,6 +115,11 @@ if (typeof Quill === "undefined") {
     quill.root.addEventListener("click", event => {
         if (event.target instanceof HTMLImageElement) {
             selectedImage = event.target;
+
+            const index = getSelectedImageIndex();
+            const formats = quill.getFormat(index, 1);
+            imageWidth.value = selectedImage.getAttribute("width") || "300";
+            imageAlign.value = formats.align || "";
 
             applyImage.disabled = false;
             deleteImage.disabled = false;
